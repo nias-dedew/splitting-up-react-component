@@ -45,35 +45,42 @@
 
 
 import React from 'react';
+import './App.css';
+import ButtonCounter from './Components/ButtonCounter';
 
 class App extends React.Component {
   state = {
-    counter: 0,
-    showButton: false
+    show: false,
   }
 
-  IncrementItem = () => {
-    this.setState({ counter: this.state.counter + 1 });
+  handleShow = () => {
+    this.setState({
+      show: !this.state.show
+    })
   }
-
-  DecreamentItem = () => {
-    this.setState({ counter: this.state.counter - 1 });
-  }
-
-  // toggleButton = () => {
-  //   this.showButton ? "ShowButton" : "HideButton"
-  // }
 
   render() {
     return (
       <div className="App" >
-        <button onClick={this.toggleButton}>Click me!</button> <br />
-        <button onClick={this.DecreamentItem}>-</button>
-        <input className="InputNumber" value={this.state.counter} />
-        <button onClick={this.IncrementItem}>+</button>
+        <button onClick={this.handleShow}>{this.state.show ? 'Hide Counter' : 'Show Counter'}</button>
+        <p>{this.state.show && <ButtonCounter />}</p>
       </div>
     );
   }
 }
 
 export default App;
+
+// import React, { Component } from 'react'
+// import TextBox from './Components/TextBox';
+
+// class App extends React.Component {
+
+//   render() {
+//     return (
+//       <TextBox />
+//     )
+//   }
+// }
+
+// export default App;
